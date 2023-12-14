@@ -4,8 +4,12 @@ import 'package:hive_flutter/adapters.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // initialize hive db
   await Hive.initFlutter();
+  // register adapter
   Hive.registerAdapter(TransactionAdapter());
+  // open hive box
+  await Hive.openBox<Transaction>('transaction');
   runApp(const MyApp());
 }
 
